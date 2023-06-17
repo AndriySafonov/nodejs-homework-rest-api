@@ -6,6 +6,8 @@ const contactsRouter = require("./routes/api/contacts");
 
 const app = express();
 
+// app.listen(3000, () => console.log("Server running"));
+
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
