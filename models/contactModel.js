@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-// const { phoneRegExp } = require("../utils");
+const { handleMongooseError } = require("../helpers");
 
 const contactSchema = new Schema(
   {
@@ -15,20 +15,21 @@ const contactSchema = new Schema(
     phone: {
       type: String,
       minLength: 5,
-      match: phoneRegExp,
     },
     favorite: {
       type: Boolean,
       default: false,
     },
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: "user",
-      required: true,
-    },
+    // owner: {
+    //   type: Schema.Types.ObjectId,
+    //   ref: "user",
+    //   required: true,
+    // },
   },
   { versionKey: false, timestamps: true }
 );
+
+contactSchema.post("save", handleMongooseError);
 
 const Contact = model("contact", contactSchema);
 

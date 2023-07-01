@@ -1,5 +1,5 @@
 const { Contact } = require("../../models");
-const { httpError, ctrlWrapper } = require("../../utils");
+const { httpError, ctrlWrapper } = require("../../helpers");
 
 const updateStatusContact = async (req, res) => {
   const { contactId } = req.params;
@@ -9,7 +9,7 @@ const updateStatusContact = async (req, res) => {
   });
 
   if (!result) {
-    throw httpError(404, "Not found");
+    throw httpError(404, `Not found contact with id: ${contactId}`);
   }
 
   return res.json(result);

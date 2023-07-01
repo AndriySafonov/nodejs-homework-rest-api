@@ -1,19 +1,20 @@
 const { Schema, model } = require("mongoose");
-const { passwordRegExp, emailRegExp } = require("../utils");
+const { handleMongooseError } = require("../helpers");
+
+// const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const userSchema = new Schema(
   {
     password: {
       type: String,
       minLength: 6,
-      match: passwordRegExp,
       required: [true, "Set password for user"],
     },
     email: {
       type: String,
-      match: emailRegExp,
       required: [true, "Email is required"],
       unique: true,
+      // match: emailRegexp,
     },
     subscription: {
       type: String,
@@ -27,6 +28,8 @@ const userSchema = new Schema(
   },
   { versionKey: false, timestamps: true }
 );
+
+userSchema.post("save", handleMongooseError);
 
 const User = model("user", userSchema);
 
