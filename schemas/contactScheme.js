@@ -1,6 +1,6 @@
 const Joi = require("joi");
 
-const contactSchema = Joi.object({
+const contactScheme = Joi.object({
   name: Joi.string()
     .min(2)
     .max(20)
@@ -24,4 +24,6 @@ const contactSchema = Joi.object({
   favorite: Joi.boolean(),
 });
 
-module.exports = contactSchema;
+module.exports = {
+  contactScheme,
+};

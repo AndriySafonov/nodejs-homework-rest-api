@@ -1,11 +1,11 @@
-const contactSchema = require("./contactSchema");
-const updateFavoriteSchema = require("./updateFavoriteSchema");
-const registerScheme = require("./registerScheme");
-const loginScheme = require("./loginScheme");
+const { loginScheme } = require("./loginScheme");
+const { registerScheme } = require("./registerScheme");
+const { contactScheme } = require("./contactScheme");
+const { updateFavoriteScheme } = require("./updateFavoriteScheme");
 
 module.exports = {
-  contactSchema,
-  updateFavoriteSchema,
   registerScheme,
   loginScheme,
+  contactScheme,
+  updateFavoriteScheme,
 };
