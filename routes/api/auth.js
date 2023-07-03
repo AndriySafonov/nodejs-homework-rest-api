@@ -1,10 +1,11 @@
 const express = require("express");
 const { validateBody } = require("../../middlewares");
-const { registerScheme } = require("../../schemas");
+const { registerSchema } = require("../../schemas");
 const ctrl = require("../../controllers/auth");
 
 const router = express.Router();
 
-router.post("/register", validateBody(registerScheme), ctrl.register);
+// signup
+router.post("/register", validateBody(registerSchema), ctrl.register);
 
 module.exports = router;

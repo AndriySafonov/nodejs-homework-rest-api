@@ -1,12 +1,12 @@
 const Joi = require("joi");
 
-const loginScheme = Joi.object({
+const loginSchema = Joi.object({
   email: Joi.string()
     .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
     .required(),
-  password: Joi.string().required(),
+  password: Joi.string().min(6).required(),
 });
 
 module.exports = {
-  loginScheme,
+  loginSchema,
 };
