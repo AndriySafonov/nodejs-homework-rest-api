@@ -3,17 +3,6 @@ const ctrl = require("../../controllers/contacts");
 const { validateBody } = require("../../middlewares");
 const { contactSchema, updateFavoriteSchema } = require("../../schemas");
 
-// const {
-//   contacts: {
-//     listContacts,
-//     getContactById,
-//     addContact,
-//     removeContact,
-//     updateContact,
-//     updateStatusContact,
-//   },
-// } = require("../../controllers");
-
 const router = express.Router();
 
 router.get("/", ctrl.listContacts);
