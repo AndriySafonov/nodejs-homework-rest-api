@@ -1,8 +1,8 @@
 const { Schema, model } = require("mongoose");
 const {
   handleMongooseError,
-  passwordRegExp,
-  emailRegExp,
+  // passwordRegExp,
+  // emailRegExp,
 } = require("../helpers");
 
 const userSchema = new Schema(
@@ -10,15 +10,14 @@ const userSchema = new Schema(
     password: {
       type: String,
       minLength: 6,
-      match: passwordRegExp,
+      // match: passwordRegExp,
       required: [true, "Set password for user"],
     },
     email: {
       type: String,
-      match: emailRegExp,
+      // match: emailRegExp,
       required: [true, "Email is required"],
       unique: true,
-      // match: emailRegexp,
     },
     subscription: {
       type: String,
@@ -28,6 +27,10 @@ const userSchema = new Schema(
     token: {
       type: String,
       default: "",
+    },
+    avatarURL: {
+      type: String,
+      required: true,
     },
   },
   { versionKey: false, timestamps: true }
